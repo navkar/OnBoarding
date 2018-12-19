@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+                xmlns:viewModels="clr-namespace:OnBoarding.ViewModel"
+                xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+                xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FFFFFF"
+             x:Class="OnBoarding.OnBoarding">
+    <ContentPage.BindingContext>
+        <viewModels:OnBoardingViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ActiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
+            <Style x:Key="InactiveIndicator" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="OutlineColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+
+            <cards:CarouselView Grid.Row="0"
+                    ItemsSource="{Binding WelcomeDeck}"
+                    IsCyclical="False"
+                    SelectedIndex="{Binding CurrentIndex}">
+                <cards:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Grid Margin="7" Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15*" />
+                                    <RowDefinition Height="70*" />
+                                    <RowDefinition Height="15*" />
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0" BackgroundColor="#00FFFFFF" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Button FontSize="Small" Text="{Binding TitleText}" 
+                                                WidthRequest="40" HeightRequest="40"
+                                                BorderRadius="20" TextColor="White" 
+                                                BackgroundColor="{StaticResource PrimaryColor}" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <ffimageloading:CachedImage Grid.Row="1" Source="{Binding ImageUri}" 
+                                                            HorizontalOptions="Center" 
+                                                            LoadingPlaceholder="browser.png"
+                                                            DownsampleToViewSize="true"
+                                                            Aspect="AspectFit"
+                                                            VerticalOptions="Center" 
+                                                            HeightRequest="350" WidthRequest="350">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation />
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
+
+                                <StackLayout Grid.Row="2" HorizontalOptions="CenterAndExpand">
+                                    <Label TextColor="{StaticResource PrimaryColor}" FontSize="Large" FontAttributes="Bold" Text="{Binding CaptionText}"  />
+                                </StackLayout>
+                            </Grid>
+                        </ContentView>
+                    </DataTemplate>
+                </cards:CarouselView.ItemTemplate>
+
+                <controls:IndicatorsControl ToFadeDuration="1500"
+                          SelectedIndicatorStyle="{StaticResource ActiveIndicator}"
+                          UnselectedIndicatorStyle="{StaticResource InactiveIndicator}"/>
+            </cards:CarouselView>
+            <StackLayout Grid.Row="1">
+
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Text="Skip" CornerRadius="20" TextColor="{StaticResource PrimaryColor}" Command="{Binding SkipCommand}" BackgroundColor="Transparent" BorderWidth="1" BorderColor="#d3d3d3" />
+                    <Button Grid.Column="1" Text="{Binding NextButtonText}" CornerRadius="20" TextColor="White" Command="{Binding NextCommand}" BackgroundColor="{StaticResource PrimaryColor}" />
+                </Grid>    
+                    
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

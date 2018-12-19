@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Cards Deck"
+             BackgroundColor="#7F7FD5"
+             x:Class="OnBoarding.MainPage">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*" />
+                <RowDefinition Height="15*" />
+            </Grid.RowDefinitions>
+        <ActivityIndicator Grid.Row="0" x:Name="LoadingActivity" IsRunning="False" IsVisible="true" />
+        <ListView Grid.Row="0"
+            x:Name="TimeDataListView"
+            RowHeight="100"
+            ItemTapped="TimeDataListView_OnItemTapped"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell IsEnabled="true" > 
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <StackLayout>
+                                <Button Text="2" Clicked="Button_Clicked" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#D39D38" />
+                            </StackLayout>
+                            <Label Text="{Binding .}" TextColor="White" FontSize="Large" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Padding="5" Grid.Row="1" HorizontalOptions="CenterAndExpand">
+                <Label Text="SWIPE LEFT OR RIGHT" FontSize="Micro" />
+            <StackLayout Spacing="5" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="1" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#4DA0B0" />
+                <Button Text="Cancel" CornerRadius="20" TextColor="White" BackgroundColor="#D39D38" />
+                </StackLayout>
+        </StackLayout>
+        </Grid>
+</ContentPage>
