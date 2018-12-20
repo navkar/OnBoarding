@@ -9,5 +9,6 @@ namespace OnBoarding.Model
         public string ImageUri { get; set; }
         public string TitleText { get; set; }
         public string CaptionText { get; set; }
+        public double Percentage { get; set; }
     }
 }

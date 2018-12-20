@@ -26,11 +26,17 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*" />
-                <RowDefinition Height="10*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="80*" />
+                <RowDefinition Height="15*" />
             </Grid.RowDefinitions>
 
-            <cards:CarouselView Grid.Row="0"
+            <!-- Top Row -->
+            <StackLayout Grid.Row="0" HorizontalOptions="End">
+                <Button Text="Skip" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryColor}" Command="{Binding SkipCommand}" />
+            </StackLayout>
+            <!-- Middle Row -->
+            <cards:CarouselView Grid.Row="1"
                     ItemsSource="{Binding WelcomeDeck}"
                     IsCyclical="False"
                     SelectedIndex="{Binding CurrentIndex}">
@@ -43,6 +49,7 @@
                                     <RowDefinition Height="70*" />
                                     <RowDefinition Height="15*" />
                                 </Grid.RowDefinitions>
+
                                 <StackLayout Grid.Row="0" BackgroundColor="#00FFFFFF" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                         <Button FontSize="Small" Text="{Binding TitleText}" 
@@ -76,18 +83,11 @@
                           SelectedIndicatorStyle="{StaticResource ActiveIndicator}"
                           UnselectedIndicatorStyle="{StaticResource InactiveIndicator}"/>
             </cards:CarouselView>
-            <StackLayout Grid.Row="1">
-
-                <Grid Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"></ColumnDefinition>
-                        <ColumnDefinition Width="50*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="0" Text="Skip" CornerRadius="20" TextColor="{StaticResource PrimaryColor}" Command="{Binding SkipCommand}" BackgroundColor="Transparent" BorderWidth="1" BorderColor="#d3d3d3" />
-                    <Button Grid.Column="1" Text="{Binding NextButtonText}" CornerRadius="20" TextColor="White" Command="{Binding NextCommand}" BackgroundColor="{StaticResource PrimaryColor}" />
+            <!-- Bottom Row -->
+            <StackLayout Grid.Row="2">
+                <Grid Margin="15,5,15,5">
+                    <Button Grid.Row="0" Grid.Column="0" Text="{Binding NextButtonText}" BorderWidth="1" BorderColor="{StaticResource PrimaryColor}" CornerRadius="20" TextColor="{StaticResource PrimaryColor}" Command="{Binding NextCommand}" BackgroundColor="Transparent" />
                 </Grid>    
-                    
             </StackLayout>
         </Grid>
     </ContentPage.Content>

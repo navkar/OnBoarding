@@ -22,11 +22,11 @@ namespace OnBoarding.ViewModel
         {
             WelcomeDeck = new ObservableCollection<WelcomeModel>
             {
-                new WelcomeModel() { TitleText= "1", CaptionText = "Welcome to IDJoey", ImageUri = "candle.jpeg"},
-                new WelcomeModel() { TitleText= "2", CaptionText = "Scan your ID/DL", ImageUri = "shiva.jpg"},
-                new WelcomeModel() { TitleText= "3", CaptionText = "Complete your profile", ImageUri = "waterlily.jpeg"},
-                new WelcomeModel() { TitleText= "4", CaptionText = "Send verification request", ImageUri = "shiva.jpg"},
-                new WelcomeModel() { TitleText= "5", CaptionText = "Await confirmation!", ImageUri = "browser.png"}
+                new WelcomeModel() { Percentage=0.20, TitleText= "1", CaptionText = "Welcome to IDJoey", ImageUri = "candle.jpeg"},
+                new WelcomeModel() { Percentage=0.40, TitleText= "2", CaptionText = "Scan your ID/DL", ImageUri = "shiva.jpg"},
+                new WelcomeModel() { Percentage=0.60, TitleText= "3", CaptionText = "Complete your profile", ImageUri = "waterlily.jpeg"},
+                new WelcomeModel() { Percentage=0.75, TitleText= "4", CaptionText = "Send verification request", ImageUri = "shiva.jpg"},
+                new WelcomeModel() { Percentage=1.0, TitleText= "5", CaptionText = "Await confirmation!", ImageUri = "browser.png"}
             };
                         
             NextCommand = new Command(() =>
