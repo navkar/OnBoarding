@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Cards Deck"
-             BackgroundColor="#7F7FD5"
+             xmlns:effects="clr-namespace:OnBoarding.Effects;assembly=OnBoarding"
+             BackgroundColor="#FFFFFF"
              x:Class="OnBoarding.MainPage">
-        <Grid Margin="10">
+    <Grid Margin="25,32,25,32" BackgroundColor="#BE93C5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="85*" />
                 <RowDefinition Height="15*" />
@@ -12,19 +13,24 @@
         <ActivityIndicator Grid.Row="0" x:Name="LoadingActivity" IsRunning="False" IsVisible="true" />
         <ListView Grid.Row="0"
             x:Name="TimeDataListView"
-            RowHeight="100"
+            RowHeight="250"
+            Margin="5"      
             ItemTapped="TimeDataListView_OnItemTapped"
             SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell IsEnabled="true" > 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                            <StackLayout>
-                                <Button Text="2" Clicked="Button_Clicked" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#D39D38" />
+                    <ViewCell>
+                        <Frame MinimumHeightRequest="250" Padding="10" Margin="25" OutlineColor="#CECECE" CornerRadius="25" BackgroundColor="#7BC6CC" HasShadow="False">
+                            <StackLayout Orientation="Horizontal" 
+                                     HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <!--<StackLayout VerticalOptions="CenterAndExpand">
+                                    <Button Text="2" Clicked="Button_Clicked" WidthRequest="40" HeightRequest="40" BorderRadius="20" TextColor="White" BackgroundColor="#D39D38" />
+                                </StackLayout>-->
+                                <Label Text="{Binding .}" BackgroundColor="#7BC6CC" TextColor="White" FontSize="Large" />
                             </StackLayout>
-                            <Label Text="{Binding .}" TextColor="White" FontSize="Large" />
-                        </StackLayout>
+                        </Frame>
                     </ViewCell>
+                        
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

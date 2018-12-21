@@ -4,5 +4,10 @@
              x:Class="OnBoarding.App">
     <Application.Resources>
         <Color x:Key="PrimaryColor">#8f94fb</Color>
+        <Color x:Key="SecondaryColor">#8f94fb</Color>
+
+        <Color x:Key="GradientBegin">#00dbde</Color>
+        <Color x:Key="GradientEnd">#fc00ff</Color>
+        
     </Application.Resources>
 </Application>

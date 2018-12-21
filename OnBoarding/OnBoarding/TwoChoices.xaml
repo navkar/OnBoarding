@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:OnBoarding.Effects;assembly=OnBoarding"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundColor="#FFFFFF"
+             x:Class="OnBoarding.TwoChoices">
+    <Grid Margin="25,30,25,30" BackgroundColor="Transparent" effects:RoundCornersEffect.CornerRadius="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="75*" />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+        <StackLayout Padding="15" Grid.Row="0" HorizontalOptions="CenterAndExpand">
+            <BoxView HeightRequest="10" BackgroundColor="Transparent" />
+            <StackLayout Spacing="5" HorizontalOptions="CenterAndExpand">
+                <Label Text="To help you get started," FontSize="Large" FontAttributes="Bold" />
+                <Label Text="are you looking to be" FontSize="Large" FontAttributes="Bold" />
+            </StackLayout>
+        </StackLayout>
+        <ListView Grid.Row="1"
+            x:Name="OptionsListView"
+            RowHeight="225"
+            Margin="5"      
+            ItemTapped="OptionsListView_OnItemTapped"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame MinimumHeightRequest="225" Padding="10" Margin="25" OutlineColor="#CECECE" CornerRadius="25" BackgroundColor="Transparent" HasShadow="False">
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60*" />
+                                    <ColumnDefinition Width="40*" />
+                                </Grid.ColumnDefinitions>
+
+                                <ffimageloading:CachedImage Grid.Column="0" Source="{Binding ImageUri}" 
+                                                            LoadingPlaceholder="browser.png"
+                                                            DownsampleToViewSize="true"
+                                                            Aspect="AspectFill"
+                                                            VerticalOptions="CenterAndExpand" 
+                                                            HeightRequest="100" WidthRequest="100">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
+
+                                <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="{Binding OptionText}" 
+                                       HorizontalTextAlignment="End"
+                                       BackgroundColor="Transparent" TextColor="{Binding OptionColor}" 
+                                       FontAttributes="Bold" FontSize="Large" />
+                                    <BoxView HeightRequest="2" BackgroundColor="{Binding OptionColor}" />
+                                </StackLayout>
+                            </Grid>        
+                        </Frame>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Padding="15" Grid.Row="2" HorizontalOptions="CenterAndExpand">
+                <Label Text="TAP HERE TO LEARN MORE" FontSize="Micro" FontAttributes="Bold" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -11,7 +11,7 @@ namespace OnBoarding
         {
             InitializeComponent();
 
-            MainPage = new OnBoarding();
+            MainPage = new NewAccount();
         }
 
         protected override void OnStart()
